@@ -1,0 +1,146 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Change Password</title>
+    <link rel="icon" href="WorkFavicon.png" type="image/png">
+    <link rel="stylesheet" href="CP.css">
+    <style>
+        button {
+            padding: 5px 10px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e0f7fa;
+        }
+        small { font-weight: bold; }
+    </style>
+</head>
+<body>
+<!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="nav-logo">
+        <img src="WorkFavicon.png" alt="Building Mind Logo">
+        <span>Building Mind Psychology </span>
+    </div>
+    <ul class="nav-links">
+        <li><a href="HOME.html">Home</a></li>
+        <li><a href="settings.html">Settings</a></li>
+        <li><a href="profile.html">Profile</a></li>
+    </ul>
+</nav>
+
+<h1>Change Your Password</h1>
+<p>For your account security, please update your password regularly. Make sure your new password is strong and memorable.</p>
+
+<form id="cpForm">
+    <label for="currentPassword">Current Password *</label><br>
+    <input type="password" id="currentPassword" required>
+    <button type="button" class="toggle-pass" data-target="currentPassword">Show</button><br><br>
+
+    <label for="newPassword">New Password *</label><br>
+    <input type="password" id="newPassword" required>
+    <button type="button" class="toggle-pass" data-target="newPassword">Show</button>
+    <small id="strengthMsg"></small><br><br>
+
+    <label for="confirmPassword">Confirm New Password *</label><br>
+    <input type="password" id="confirmPassword" required>
+    <button type="button" class="toggle-pass" data-target="confirmPassword">Show</button><br><br>
+
+    <a href="FP.html">Forgot Password?</a><br><br>
+
+    <button type="submit">Update Password</button>
+    <button type="reset">Reset</button>
+</form>
+
+<br>
+<a href="settings.html" class="back-link">Back to Settings</a>
+
+<script>
+// ===== DOM Selectors =====
+const cpForm = document.getElementById('cpForm');
+const currentPass = document.getElementById('currentPassword');
+const newPass = document.getElementById('newPassword');
+const confirmPass = document.getElementById('confirmPassword');
+const strengthMsg = document.getElementById('strengthMsg');
+const toggleButtons = document.querySelectorAll('.toggle-pass');
+
+// ===== Password Strength Function =====
+function getPasswordStrength(pwd) {
+    let strength = 0;
+    if(pwd.length >= 6) strength++;
+    if(/\d/.test(pwd)) strength++;
+    if(/[!@#$%^&*]/.test(pwd)) strength++;
+    return strength;
+}
+
+// Update live strength message
+newPass.addEventListener('input', () => {
+    const pwd = newPass.value.trim();
+    const strength = getPasswordStrength(pwd);
+    if(strength === 0) strengthMsg.textContent = "";
+    else if(strength === 1){ strengthMsg.textContent="Weak"; strengthMsg.style.color="red"; }
+    else if(strength === 2){ strengthMsg.textContent="Moderate"; strengthMsg.style.color="orange"; }
+    else { strengthMsg.textContent="Strong"; strengthMsg.style.color="green"; }
+});
+
+// Show/Hide password toggle
+toggleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const input = document.getElementById(btn.dataset.target);
+        if(input.type === 'password'){ input.type='text'; btn.textContent='Hide'; }
+        else { input.type='password'; btn.textContent='Show'; }
+    });
+});
+
+// ===== Handle Password Update =====
+cpForm.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const current = currentPass.value.trim();
+    const newP = newPass.value.trim();
+    const confirmP = confirmPass.value.trim();
+    const storedPassword = localStorage.getItem('userPassword');
+
+    if(!current || !newP || !confirmP){
+        alert("All fields are required!");
+        return;
+    }
+
+    if(current !== storedPassword){
+        alert("Current password is incorrect!");
+        return;
+    }
+
+    if(newP !== confirmP){
+        alert("New password and confirm password do not match!");
+        return;
+    }
+
+    if(getPasswordStrength(newP) < 3){
+        alert("Password too weak! Include 6+ chars, number & special character.");
+        return;
+    }
+
+    // Update password in localStorage
+    localStorage.setItem('userPassword', newP);
+    alert("Password updated successfully!");
+    cpForm.reset();
+    strengthMsg.textContent = "";
+});
+</script>
+
+<footer>
+<h3>About Our Clinic</h3>
+<p> For any issues or inquiries, please contact us. </p>
+<p> Phone: <a href="tel:+919941843445">+91 99418 43445</a></p>
+<p>Email: <a href="mailto:mvarshalakshmi07@gmail.com">mvarshalakshmi07@gmail.com</a> </p>
+<p> <a href="HOME.html">Home</a> |
+    <a href="FB.html">Feedback</a> |
+    <a href="settings.html">Settings</a>
+</p>
+<p>&copy; 2026 Building Mind Psychology</p>
+</footer>
+
+</body>
+</html>

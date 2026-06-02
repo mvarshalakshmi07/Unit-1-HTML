@@ -1,0 +1,161 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Stop Overthinking</title>
+    <link rel="icon" href="WorkFavicon.png" type="image/png">
+    <link rel="stylesheet" href="SOT.css">
+    
+</head>
+<body>
+    <!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="nav-logo">
+        <img src="WorkFavicon.png" alt="Building Mind Logo">
+        <span>Building Mind Psychology </span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="HOME.html">Home</a></li>
+        <li><a href="settings.html">Settings</a></li>
+        <li><a href="profile.html">Profile</a></li>
+    </ul>
+</nav>
+<div class="content">
+    <h1>Stop Overthinking – Mental Clarity Support</h1>
+</div>
+    <p>
+        Overthinking is a habit where the mind becomes trapped in repetitive thoughts, doubts, and “what if” scenarios. 
+        While careful thinking can be useful, excessive rumination often increases stress, drains mental energy, and makes decision-making difficult. 
+        Individuals who overthink may focus on past mistakes or worry about the future, which can prevent them from living fully in the present.
+    </p>
+
+    <p>
+        Overthinking also reduces creativity and can make even simple tasks feel overwhelming. 
+        It may lead to self-doubt and fear of taking action, leaving a person stuck in a cycle of worry.
+        Breaking this cycle involves setting boundaries for thoughts, focusing on what you can control, and practicing letting go of what cannot be changed.
+    </p>
+
+    <p>
+        Building awareness is key — by observing thoughts without judgment, patterns that trigger overthinking can be noticed and gradually replaced with more productive thinking. 
+        Techniques such as journaling, mindfulness, deep breathing, and short mental breaks help train the mind to stay calm, focused, and solution-oriented.
+    </p>
+
+    <p>
+        Stopping overthinking is not about ignoring problems, but balancing reflection with action. 
+        Prioritizing what truly matters, making decisions confidently, and practicing self-compassion reduce stress, improve mental clarity, and enhance emotional well-being.
+    </p>
+
+    <img src="SOT.jpeg" alt="Stop Overthinking" width="500"class="therapy-img">
+
+    <h2><i>Clinical Tips to Reduce Overthinking</i></h2>
+    <ol>
+        <li><b>Focus on the Present:</b> Pay attention to the present moment instead of dwelling on past mistakes or future worries.</li>
+        <li><b>Set Time Limits for Decisions:</b> Give yourself a specific time to make choices to avoid endless pondering.</li>
+        <li><b>Write It Down:</b> Journaling your thoughts can help release mental clutter and clarify your thinking.</li>
+        <li><b>Practice Mindfulness or Meditation:</b> Simple breathing exercises or mindfulness techniques calm the mind.</li>
+        <li><b>Challenge Negative Thoughts:</b> Ask yourself if your worries are realistic or if you’re exaggerating.</li>
+        <li><b>Take Action:</b> Even small steps toward solving a problem reduce overthinking.</li>
+        <li><b>Limit “What If” Thinking:</b> Replace “what if” questions with “what can I do now?”</li>
+    </ol>
+
+    <div class="nav-buttons">
+    <a href="POB.html">BACK</a>
+    </div>
+
+    <p>
+        New Commer? 
+        <a href="ABP.html">Book Appointment</a>
+    </p>
+    <script type="text/javascript">
+// ===== DOM Selectors =====
+const tipsHeader = document.querySelector('h2');
+const tipsList = document.querySelector('ol');
+const therapyImg = document.querySelector('.therapy-img');
+const bookBtn = document.querySelector('a[href="ABP.html"]');
+const tipBox = document.createElement('div'); // floating tip box
+tipBox.style.position = "fixed";
+tipBox.style.bottom = "20px";
+tipBox.style.right = "-350px"; // start off-screen
+tipBox.style.width = "300px";
+tipBox.style.padding = "15px";
+tipBox.style.border = "1px solid #aaa";
+tipBox.style.background = "#f0f8ff";
+tipBox.style.fontStyle = "italic";
+tipBox.style.boxShadow = "0 4px 8px rgba(0,0,0,0.2)";
+tipBox.style.transition = "right 0.5s ease"; // smooth slide
+tipBox.textContent = "Your mindfulness tip will appear here!";
+document.body.appendChild(tipBox);
+
+const navLinks = document.querySelectorAll('.nav-links a');
+
+// ===== Arrays & Objects =====
+const tipsArray = [
+    { text: "Take 3 deep breaths. Let go of tension." },
+    { text: "Notice 5 things around you. Stay present." },
+    { text: "Stretch your body for 1 minute. Release stress." },
+    { text: "Write down one worry and let it go." },
+    { text: "Smile. It calms your mind." },
+    { text: "Focus on something you can control right now." },
+    { text: "Take a short walk. Clear your thoughts." },
+    { text: "Pause. Repeat a calming word: 'peace'." }
+];
+
+let currentTipIndex = 0;
+
+// ===== Functions =====
+function toggleTips() {
+    tipsList.style.display = (tipsList.style.display === 'none') ? 'block' : 'none';
+}
+
+function toggleImageSize() {
+    const width = getComputedStyle(therapyImg).width;
+    therapyImg.style.width = (width === '500px') ? '700px' : '500px';
+}
+
+function showNextTip() {
+    tipBox.textContent = tipsArray[currentTipIndex].text;
+    tipBox.style.right = "20px"; // slide in
+
+    // slide out after 4 seconds
+    setTimeout(() => {
+        tipBox.style.right = "-350px";
+    }, 4000);
+
+    currentTipIndex = (currentTipIndex + 1) % tipsArray.length;
+}
+
+function bookAppointment(e) {
+    e.preventDefault();
+    alert("Thank you! Redirecting to Book Appointment page.");
+    window.location.href = "ABP.html";
+}
+
+// ===== Event Listeners =====
+tipsHeader.addEventListener('click', toggleTips);
+therapyImg.addEventListener('click', toggleImageSize);
+bookBtn.addEventListener('click', bookAppointment);
+
+// Nav hover effect
+navLinks.forEach(link => {
+    link.addEventListener('mouseover', () => link.parentNode.style.backgroundColor = '#e0f7fa');
+    link.addEventListener('mouseout', () => link.parentNode.style.backgroundColor = '');
+});
+
+// ===== Rotating tips every 10s =====
+setInterval(showNextTip, 10000);
+showNextTip(); // show first tip immediately
+</script>
+</body>
+    <footer>
+        <h3>About Our Clinic</h3>
+
+        <p> For any issues or inquiries, please contact us. </p>
+
+        <p> Phone: <a href="tel:+919941843445">+91 99418 43445</a></p>
+        <p>Email: <a href="mailto:mvarshalakshmi07@gmail.com">mvarshalakshmi07@gmail.com</a> </p>
+            <p> <a href="HOME.html">Home</a> |
+            <a href="FB.html">Feedback</a> |
+            <a href="settings.html">Settings</a> </p>
+        <p>&copy; 2026 Building Mind Psychology</p>
+    </footer>
+</html>

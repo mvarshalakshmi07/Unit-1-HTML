@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Book Appointment</title>
+    <link rel="icon" href="WorkFavicon.png" type="image/png">
+    <link rel="stylesheet" href="ABP.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+<nav class="navbar">
+    <div class="nav-logo">
+        <img src="WorkFavicon.png" alt="Building Mind Logo">
+        <span>Building Mind Psychology </span>
+    </div>
+
+    <ul class="nav-links">
+        <li><a href="HOME.html">Home</a></li>
+        <li><a href="settings.html">Settings</a></li>
+        <li><a href="profile.html">Profile</a></li>
+    </ul>
+</nav>
+<div class="content">
+    <h1>Book an Appointment</h1>
+</div>
+    <form id="appointmentForm"> 
+
+        <label for="name">Full Name *</label><br>
+        <input type="text" id="name" name="name" placeholder="Enter your full name" required><br><br>
+
+        <label for="email">Email *</label><br>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required><br><br>
+
+        <label for="phone">Phone Number *</label><br>
+        <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required><br><br>
+
+        <label for="age">Age *</label><br>
+        <input type="number" id="age" name="age" min="18" max="100" required><br><br>
+
+        <label for="date">Preferred Appointment Date *</label><br>
+        <input type="date" id="date" name="date" required><br><br>
+
+        <label for="time">Preferred Time *</label><br>
+        <input type="time" id="time" name="time" required><br><br>
+
+        <label for="reason">Reason for Visit *</label><br>
+        <textarea id="reason" name="reason" rows="4" cols="50" placeholder="Briefly describe your concern" required></textarea><br><br>
+
+        <button type="submit">Submit Appointment</button>
+        <button type="reset">Reset</button>
+
+    </form>
+    <p>
+        Please fill out the form below to schedule an appointment with our
+        psychologists or mental health counselors. Fields marked with <b>*</b> are required.
+    </p>
+
+    <p><i>Note: This form is for scheduling purposes only. Our staff will contact you to confirm your appointment.</i></p>
+
+    <a href="HOME.html">BACK TO HOME</a>
+
+<script>
+
+// ===== DOM Selectors =====
+const form = document.getElementById("appointmentForm");
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const phoneInput = document.getElementById("phone");
+const ageInput = document.getElementById("age");
+const dateInput = document.getElementById("date");
+const timeInput = document.getElementById("time");
+const reasonInput = document.getElementById("reason");
+
+
+// ===== Function to Validate Email =====
+function validEmail(email){
+    return email.includes("@") && email.includes(".");
+}
+
+
+// ===== Function to Validate Phone =====
+function validPhone(phone){
+    return phone.length === 10;
+}
+
+
+// ===== Event Handling =====
+form.addEventListener("submit", function(e){
+
+    e.preventDefault(); // stop form refresh
+
+    // Get values
+    let name = nameInput.value.trim();
+    let email = emailInput.value.trim();
+    let phone = phoneInput.value.trim();
+    let age = ageInput.value;
+    let date = dateInput.value;
+    let time = timeInput.value;
+    let reason = reasonInput.value.trim();
+
+
+    // ===== Conditions =====
+    if(name === "" || email === "" || phone === "" || age === "" || date === "" || time === "" || reason === ""){
+        alert("Please fill all required fields!");
+        return;
+    }
+
+    if(!validEmail(email)){
+        alert("Please enter a valid email!");
+        return;
+    }
+
+    if(!validPhone(phone)){
+        alert("Phone number must be 10 digits!");
+        return;
+    }
+
+
+    // ===== Object Creation =====
+    const appointment = {
+        name: name,
+        email: email,
+        phone: phone,
+        age: age,
+        date: date,
+        time: time,
+        reason: reason
+    };
+
+
+    // ===== Store in Array =====
+    let appointments = JSON.parse(localStorage.getItem("appointments")) || [];
+    appointments.push(appointment);
+
+
+    // ===== Loop Example =====
+    appointments.forEach(function(app){
+        console.log(app.name + " booked on " + app.date);
+    });
+
+
+    // Save to localStorage
+    localStorage.setItem("appointments", JSON.stringify(appointments));
+
+
+    alert("Appointment submitted successfully! Our staff will contact you soon.");
+
+    form.reset();
+
+});
+
+</script>
+
+</body>
+
+    <footer>
+        <h3>About Our Clinic</h3>
+
+        <p> For any issues or inquiries, please contact us. </p>
+
+        <p> Phone: <a href="tel:+919941843445">+91 99418 43445</a></p>
+        <p>Email: <a href="mailto:mvarshalakshmi07@gmail.com">mvarshalakshmi07@gmail.com</a> </p>
+            <p> <a href="HOME.html">Home</a> |
+            <a href="FB.html">Feedback</a> |
+            <a href="settings.html">Settings</a> </p>
+        <p>&copy; 2026 Building Mind Psychology</p>
+    </footer>
+</html>

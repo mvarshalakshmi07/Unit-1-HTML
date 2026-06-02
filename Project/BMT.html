@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Build Mental Toughness</title>
+    <link rel="icon" href="WorkFavicon.png" type="image/png">
+    <link rel="stylesheet" href="BMT.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">
+            <img src="WorkFavicon.png" alt="Building Mind Logo">
+            <span>Building Mind Psychology</span>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="HOME.html">Home</a></li>
+            <li><a href="settings.html">Settings</a></li>
+            <li><a href="profile.html">Profile</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="content">
+        <h1>Mental Toughness Assessment</h1>
+    </div>
+
+    <p>
+        This assessment is designed by <b>Building Mind Psychology</b> to help understand
+        how well an individual manages stress, pressure, and emotional challenges.
+    </p>
+
+    <p>
+        Please read each statement carefully and select the option that best describes
+        how you usually feel or behave.
+    </p>
+
+    <iframe width="50%" height="315"
+        src="https://www.youtube.com/embed/Ks-_Mh1QhMc"
+        title="Mental Toughness Awareness Video"
+        allowfullscreen>
+    </iframe>
+
+    <h3>Patient Self-Assessment Questionnaire</h3>
+
+    <!-- FORM START -->
+    <form id="assessmentForm">
+
+        <p>1. When I face unexpected problems, I stay calm and try to find solutions instead of panicking.</p>
+        <input type="radio" name="q1" value="1"> 1 - Strongly Disagree<br>
+        <input type="radio" name="q1" value="2"> 2 - Disagree<br>
+        <input type="radio" name="q1" value="3"> 3 - Neutral<br>
+        <input type="radio" name="q1" value="4"> 4 - Agree<br>
+        <input type="radio" name="q1" value="5"> 5 - Strongly Agree<br><br>
+
+        <p>2. I continue working toward my goals even when I feel tired or unmotivated.</p>
+        <input type="radio" name="q2" value="1"> 1 - Strongly Disagree<br>
+        <input type="radio" name="q2" value="2"> 2 - Disagree<br>
+        <input type="radio" name="q2" value="3"> 3 - Neutral<br>
+        <input type="radio" name="q2" value="4"> 4 - Agree<br>
+        <input type="radio" name="q2" value="5"> 5 - Strongly Agree<br><br>
+
+        <p>3. I accept failures as learning experiences rather than giving up.</p>
+        <input type="radio" name="q3" value="1"> 1 - Strongly Disagree<br>
+        <input type="radio" name="q3" value="2"> 2 - Disagree<br>
+        <input type="radio" name="q3" value="3"> 3 - Neutral<br>
+        <input type="radio" name="q3" value="4"> 4 - Agree<br>
+        <input type="radio" name="q3" value="5"> 5 - Strongly Agree<br><br>
+
+        <p>4. I can control my emotions during stressful situations.</p>
+        <input type="radio" name="q4" value="1"> 1 - Strongly Disagree<br>
+        <input type="radio" name="q4" value="2"> 2 - Disagree<br>
+        <input type="radio" name="q4" value="3"> 3 - Neutral<br>
+        <input type="radio" name="q4" value="4"> 4 - Agree<br>
+        <input type="radio" name="q4" value="5"> 5 - Strongly Agree<br><br>
+
+        <p>5. I believe in myself even when others doubt me.</p>
+        <input type="radio" name="q5" value="1"> 1 - Strongly Disagree<br>
+        <input type="radio" name="q5" value="2"> 2 - Disagree<br>
+        <input type="radio" name="q5" value="3"> 3 - Neutral<br>
+        <input type="radio" name="q5" value="4"> 4 - Agree<br>
+        <input type="radio" name="q5" value="5"> 5 - Strongly Agree<br><br>
+
+        <button type="button" onclick="calculateScore()">SUBMIT ASSESSMENT</button>
+
+    </form>
+
+    <h2 id="result"></h2>
+
+<a href="SC.html" id="nextBtn">NEXT</a>
+
+    <!-- Footer -->
+    <footer>
+        <h3>About Our Clinic</h3>
+        <p>For any issues or inquiries, please contact us.</p>
+        <p>Phone: +91 99418 43445</p>
+        <p>Email: mvarshalakshmi07@gmail.com</p>
+        <p>&copy; 2026 Building Mind Psychology</p>
+    </footer>
+
+    <!-- External JS -->
+    <script src="BMT.js"></script>
+
+</body>
+</html>
